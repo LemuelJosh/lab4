@@ -77,96 +77,30 @@ void check_space_character() {
     }
 }
 
-void count_uppercase_characters() {
+void check_string() {
     char input;
-    int count = 0;
+    int upper_count = 0;
+    int lower_count = 0;
+    int digit_count = 0;
+    int space_count = 0;
     printf("Enter a string: ");
     scanf(" ");
     while ((input = getchar()) != '\n') {
         if (check_upper(input)) {
-            count++;
+            upper_count++;
+        } else if (check_lower(input)) {
+            lower_count++;
+        } else if (check_digit(input)) {
+            digit_count++;
+        } else if (check_space(input)) {
+            space_count++;
         }
     }
-    printf("Number of uppercase characters: %d\n", count);
-}
-
-void count_lowercase_characters() {
-    char input;
-    int count = 0;
-    printf("Enter a string: ");
-    scanf(" ");
-    while ((input = getchar()) != '\n') {
-        if (check_lower(input)) {
-            count++;
-        }
-    }
-    printf("Number of lowercase characters: %d\n", count);
-}
-
-void count_digit_characters() {
-    char input;
-    int count = 0;
-    printf("Enter a string: ");
-    scanf(" ");
-    while ((input = getchar()) != '\n') {
-        if (check_digit(input)) {
-            count++;
-        }
-    }
-    printf("Number of digit characters: %d\n", count);
-}
-
-void count_space_characters() {
-    char input;
-    int count = 0;
-    printf("Enter a string: ");
-    scanf(" ");
-    while ((input = getchar()) != '\n') {
-        if (check_space(input)) {
-            count++;
-        }
-    }
-    printf("Number of space characters: %d\n", count);
-}
-
-void check_string() {
-    int choice;
-    do {
-        printf("\nPlease choose an option from the menu:\n");
-        printf("1. Count number of uppercase characters\n");
-        printf("2. Count number of lowercase characters\n");
-        printf("3. Count number of digit characters\n");
-        printf("4. Count number of space characters\n");
-        printf("0. Exit\n");
-
-        printf("Your choice: ");
-        scanf("%d", &choice);
-
-        switch (choice) {
-            case 1:
-                count_uppercase_characters();
-                break;
-
-            case 2:
-                count_lowercase_characters();
-                break;
-
-            case 3:
-                count_digit_characters();
-                break;
-
-            case 4:
-                count_space_characters();
-                break;
-
-            case 0:
-                printf("Exiting...\n");
-                break;
-
-            default:
-                printf("Invalid choice. Please try again.\n");
-        }
-    } while (choice != 0);
+    printf("String analysis:\n");
+    printf("Uppercase characters: %d\n", upper_count);
+    printf("Lowercase characters: %d\n", lower_count);
+    printf("Digit characters: %d\n", digit_count);
+    printf("Space characters: %d\n", space_count);
 }
 
 int main() {
@@ -176,13 +110,9 @@ int main() {
         printf("\nPlease choose an option from the menu:\n");
         printf("1. Check if a character is uppercase\n");
         printf("2. Check if a character is lowercase\n");
-        printf("3. Check if a character is adigit\n");
+        printf("3. Check if a character is a digit\n");
         printf("4. Check if a character is a space\n");
         printf("5. Check a string\n");
-        printf("6. Count number of uppercase characters in a string\n");
-        printf("7. Count number of lowercase characters in a string\n");
-        printf("8. Count number of digit characters in a string\n");
-        printf("9. Count number of space characters in a string\n");
         printf("0. Exit\n");
 
         printf("Your choice: ");
@@ -207,22 +137,6 @@ int main() {
 
             case 5:
                 check_string();
-                break;
-
-            case 6:
-                count_uppercase_characters();
-                break;
-
-            case 7:
-                count_lowercase_characters();
-                break;
-
-            case 8:
-                count_digit_characters();
-                break;
-
-            case 9:
-                count_space_characters();
                 break;
 
             case 0:
